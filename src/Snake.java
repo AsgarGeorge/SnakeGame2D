@@ -4,10 +4,16 @@ import java.util.Scanner;
 
 public class Snake {
 
-    private char[][] snakeBoard;
+    public char[][] snakeBoard;
     Queue<Node> path = new LinkedList<>();
     Snake(int row , int col){
         this.snakeBoard = new char[row][col];
+
+        for (int  i=0 ; i< snakeBoard.length;i++) {
+            for (int j = 0; j < snakeBoard[0].length; j++) {
+               this.snakeBoard[i][j]= 'O';
+            }
+        }
         path.add(new Node(0,0));
         this.snakeBoard[1][0] ='X';
         this.snakeBoard[2][2] ='X';
@@ -26,7 +32,7 @@ public class Snake {
                 Node node = path.poll();
                 int r = node.getRow();
                 int c = node.getCol();
-                snakeBoard[r][c] = '\0';
+                snakeBoard[r][c] = 'O';
                 //for changing the tail of the snake to the "0"
                 snakeBoard[row][col] = '.';
             while (!path.isEmpty()) {
@@ -35,16 +41,16 @@ public class Snake {
                 Scanner s = new Scanner(System.in);
                 char direction = s.next().charAt(0);
 
-                if (direction == 'U') {
+                if (direction == 'w') {
                     snakeMove(--row, col);
                 }
-                if (direction == 'D') {
+                if (direction == 's') {
                     snakeMove(++row, col);
                 }
-                if (direction == 'R') {
+                if (direction == 'd') {
                     snakeMove(row, ++col);
                 }
-                if (direction == 'L') {
+                if (direction == 'a') {
                     snakeMove(row, --col);
                 }
             }
