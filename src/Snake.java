@@ -33,8 +33,10 @@ public class Snake {
                 int r = node.getRow();
                 int c = node.getCol();
                 snakeBoard[r][c] = 'O';
+
                 //for changing the tail of the snake to the "0"
                 snakeBoard[row][col] = '.';
+            }
             while (!path.isEmpty()) {
                 displaySnake();
                 System.out.print("Enter a position : ");
@@ -61,7 +63,7 @@ public class Snake {
             }
         }
 
-        }
+
     public void displaySnake() {
         for (char[] chars : snakeBoard) {
             for (int j = 0; j < snakeBoard[0].length; j++) {
@@ -69,6 +71,6 @@ public class Snake {
             }
             System.out.println();
         }
-    }
-}
+    }}
+
 
